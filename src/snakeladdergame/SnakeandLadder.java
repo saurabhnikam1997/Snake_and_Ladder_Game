@@ -5,9 +5,11 @@ import java.util.Random;
 public class SnakeandLadder {
 	
 	static int[] board = new int[101];
-	int Startposition = 0;
+	static int position=0;
+	static int Startposition = 0;
 	int Endposition = 100;
 	static int Dice_value =0;
+	static int option =0;
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
@@ -24,6 +26,28 @@ public class SnakeandLadder {
 	public static void rollDice() {
 		Random random = new Random();
 		Dice_value = random.nextInt(6) + 1;
-		System.out.println(Dice_value);		
+		System.out.println(Dice_value);
+		
+		option = random.nextInt(3) + 1;
+		switch(option) 
+		{
+		case 0:
+			System.out.println("Nopaly");
+			break;
+			
+		case 1:
+			position = Startposition + Dice_value;
+			break;
+			
+		case 2:
+			position = Startposition - Dice_value;
+			break;
+			
+		default:
+			System.out.println("Invalid Operation");;
+			break;
+		
+		}
+		
 	}
 }
