@@ -10,11 +10,12 @@ public class SnakeandLadder {
 		
 	}
 	public static void rollDice() {
-		
-		int Dice_value = (int)Math.floor((Math.random()*10 +1 )% 6);
-		System.out.println(Dice_value);
 		int position = 0;
+		int no_rolls = 0;
 		while(position==100) {
+			int Dice_value = (int)Math.floor((Math.random()*10 +1 )% 6);
+			System.out.println("No_of_die_roll"+no_rolls+"Position ofthe player"+position);
+			no_rolls=no_rolls+1;
 			int option = (int)Math.floor((Math.random()*10 +1 )% 3);
 			switch(option) 
 			{
@@ -51,5 +52,7 @@ public class SnakeandLadder {
 					break;	
 			}
 		}
+		System.out.println("number of die roll "+no_rolls+" position of player:"+position);
+
 	}
 }
