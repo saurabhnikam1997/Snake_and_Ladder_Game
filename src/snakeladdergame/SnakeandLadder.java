@@ -1,53 +1,50 @@
 package snakeladdergame;
 
-import java.util.Random;
-
 public class SnakeandLadder {
-	
-	static int[] board = new int[101];
-	static int position=0;
-	static int Startposition = 0;
-	int Endposition = 100;
-	static int Dice_value =0;
-	static int option =0;
-	
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake and Ladder Game");
+		//int[] board = new int[101];
 		new SnakeandLadder();
-	//	SnakeandLadder.board();
-		SnakeandLadder.showboard(board);
 		SnakeandLadder.rollDice();
+		
 	}
-
-	private static void showboard(int[] board) {
-		System.out.println("Snake and Ladder Game Board");		
-	}
-	
 	public static void rollDice() {
-		Random random = new Random();
-		Dice_value = random.nextInt(6) + 1;
+		
+		int Dice_value = (int)Math.floor((Math.random()*10 +1 )% 6);
 		System.out.println(Dice_value);
-		
-		option = random.nextInt(3) + 1;
-		switch(option) 
-		{
-		case 0:
-			System.out.println("Nopaly");
-			break;
-			
-		case 1:
-			position = Startposition + Dice_value;
-			break;
-			
-		case 2:
-			position = Startposition - Dice_value;
-			break;
-			
-		default:
-			System.out.println("Invalid Operation");;
-			break;
-		
+		int position = 0;
+		while(position==100) {
+			int option = (int)Math.floor((Math.random()*10 +1 )% 3);
+			System.out.println(option);
+
+			switch(option) 
+			{
+				case 0:
+					System.out.println("Nopaly");			
+					break;
+			//Ladder
+				case 1:
+					position = position + Dice_value;
+					System.out.println(position);
+					break;
+			//snake
+				case 2:
+						if(position>0 )
+						{
+							position = position - Dice_value;
+							System.out.println(position);
+							break;
+						}
+						else
+						{	
+							position=0;
+							break;
+						}
+				default:
+					System.out.println("Invalid Operation");;
+					break;	
+			}
 		}
-		
 	}
 }
