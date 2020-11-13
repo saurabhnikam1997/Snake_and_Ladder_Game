@@ -16,8 +16,6 @@ public class SnakeandLadder {
 		int position = 0;
 		while(position==100) {
 			int option = (int)Math.floor((Math.random()*10 +1 )% 3);
-			System.out.println(option);
-
 			switch(option) 
 			{
 				case 0:
@@ -25,9 +23,16 @@ public class SnakeandLadder {
 					break;
 			//Ladder
 				case 1:
-					position = position + Dice_value;
-					System.out.println(position);
-					break;
+					if(position+Dice_value<=100)
+					{
+						position = position + Dice_value;
+						break;
+					}
+					else
+					{
+						position=0;
+						break;
+					}
 			//snake
 				case 2:
 						if(position>0 )
